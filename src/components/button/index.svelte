@@ -24,6 +24,7 @@
 		}
 		&[data-color='dark-grey'] {
 			background-color: rgb(39, 39, 39);
+			color: white;
 		}
 	}
 </style>

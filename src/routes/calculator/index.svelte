@@ -46,23 +46,7 @@
 				}}
 			/>
 		{/each}
-	</div>
 
-	<div class="operators">
-		{#each textOperators as text}
-			<Button
-				{text}
-				color="grey"
-				onClick={(value) => {
-					oper = value;
-					str = str + oper;
-					str2 = '';
-				}}
-			/>
-		{/each}
-	</div>
-
-	<div class="Ceqaul">
 		{#each textCequal as text}
 			<Button
 				{text}
@@ -84,12 +68,25 @@
 			/>
 		{/each}
 	</div>
+
+	<div class="operators">
+		{#each textOperators as text}
+			<Button
+				{text}
+				color="grey"
+				onClick={(value) => {
+					oper = value;
+					str = str + oper;
+					str2 = '';
+				}}
+			/>
+		{/each}
+	</div>
 </div>
 
 <style lang="scss">
 	.frame {
 		width: 320px;
-		height: 400px;
 		display: flex;
 		flex-wrap: wrap;
 	}
@@ -103,12 +100,5 @@
 		width: 240px;
 		display: flex;
 		flex-wrap: wrap;
-	}
-
-	.Ceqaul {
-		display: flex;
-		height: 80px;
-		width: 160px;
-		color: white;
 	}
 </style>

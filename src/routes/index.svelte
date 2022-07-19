@@ -1,9 +1,31 @@
 <script context="module" lang="ts">
 	export const prerender = true;
-</script>
-
-<script lang="ts">
-	import Counter from '$lib/Counter.svelte';
+	const keyword_item: string[] = [
+		'지구한바퀴 세계여행',
+		'그림 웹툰',
+		'시사 이슈',
+		'IT 트렌드',
+		'사진 촬영',
+		'취향저격 영화 리뷰',
+		'오늘은 이런 책',
+		'뮤직 인사이드',
+		'글쓰기 코치',
+		'직장인 현실 조언',
+		'스타트업 경험담',
+		'육아 이야기',
+		'요리 레시피',
+		'건강 운동',
+		'멘탈 관리 심리 탐구',
+		'디자인 스토리',
+		'문화 예술',
+		'건축 설계',
+		'인문학 철학',
+		'쉽게 읽는 역사',
+		'우리집 반려동물',
+		'멋진 캘리그래피',
+		'사랑 이별',
+		'감성 에세이'
+	];
 </script>
 
 <svelte:head>
@@ -20,6 +42,7 @@
 	</head>
 	<body style="margin: 0;">
 		<div class="banner" style="text-align: center;">
+			<!-- svelte-ignore a11y-missing-attribute -->
 			<img
 				style="margin: 0 auto;"
 				src="https://t1.daumcdn.net/section/oc/d27ae25db6cb4f3da246edc8365b76ae"
@@ -132,81 +155,13 @@
 		<div class="brunch_keyword_text" />
 
 		<div class="keyword_container">
-			<div class="keyword_item">
-				<span class="keyword_text">
-					지구한바퀴<br />세계여행
-				</span>
-			</div>
-			<div class="keyword_item">
-				<span class="keyword_text">그림 웹툰</span>
-			</div>
-			<div class="keyword_item">
-				<span class="keyword_text">시사 이슈</span>
-			</div>
-			<span class="keyword_item">
-				<span class="keyword_text">IT<br />트렌드</span>
-			</span>
-			<span class="keyword_item">
-				<span class="keyword_text">사진 촬영</span>
-			</span>
-			<span class="keyword_item">
-				<span class="keyword_text">취향저격<br />영화 리뷰</span>
-			</span>
-			<span class="keyword_item">
-				<span class="keyword_text">오늘은<br />이런 책</span>
-			</span>
-			<span class="keyword_item">
-				<span class="keyword_text">뮤직 인사이드</span>
-			</span>
-			<span class="keyword_item">
-				<span class="keyword_text">글쓰기<br />코치</span>
-			</span>
-			<span class="keyword_item">
-				<span class="keyword_text">직장인<br />현실 조언</span>
-			</span>
-			<span class="keyword_item">
-				<span class="keyword_text">스타트업<br />경험담</span>
-			</span>
-			<span class="keyword_item">
-				<span class="keyword_text">육아<br />이야기</span>
-			</span>
-			<span class="keyword_item">
-				<span class="keyword_text">요리 레시피</span>
-			</span>
-			<span class="keyword_item">
-				<span class="keyword_text">건강 운동</span>
-			</span>
-			<span class="keyword_item">
-				<span class="keyword_text">멘탈 관리<br />심리 탐구</span>
-			</span>
-			<span class="keyword_item">
-				<span class="keyword_text">디자인<br />스토리</span>
-			</span>
-			<span class="keyword_item">
-				<span class="keyword_text">문화 예술</span>
-			</span>
-			<span class="keyword_item">
-				<span class="keyword_text">건축 설계</span>
-			</span>
-			<span class="keyword_item">
-				<span class="keyword_text">인문학 철학</span>
-			</span>
-			<span class="keyword_item">
-				<span class="keyword_text">쉽게 읽는<br />역사</span>
-			</span>
-			<span class="keyword_item">
-				<span class="keyword_text">우리집<br />반려동물</span>
-			</span>
-			<span class="keyword_item">
-				<span class="keyword_text">멋진<br />캘리그래피</span>
-			</span>
-			<span class="keyword_item">
-				<span class="keyword_text">사랑 이별</span>
-			</span>
-			<span class="keyword_item">
-				<span class="keyword_text">감성<br />에세이</span>
-			</span>
+			{#each keyword_item as keyword}
+				<div class="keyword_item">
+					<div class="keyword_text">{keyword}</div>
+				</div>
+			{/each}
 		</div>
+
 		<div class="brunch_writers">
 			<div class="brunch_writer" />
 
@@ -641,19 +596,6 @@ css적용이 안되던데 왜 그런지 궁금함
 		word-break: keep-all;
 	}
 
-	.writer_jop {
-		color: #666;
-		display: block;
-		font-family: 'Noto Sans Light', sans-serif;
-		font-weight: 300;
-		letter-spacing: -0.02em;
-		margin-top: 4px;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		font-size: 12px;
-	}
-
 	.writer_explain {
 		-webkit-line-clamp: inherit;
 		color: #959595;
@@ -668,18 +610,6 @@ css적용이 안되던데 왜 그런지 궁금함
 		width: 230px;
 		margin: 0 auto;
 		margin-top: 16px;
-	}
-
-	.test {
-		color: red;
-		font-size: 32px;
-		display: inline-block;
-		width: 320px;
-		height: 320px;
-		border-radius: 0%;
-		transition: border-radius 0.2s;
-		/*시간 들이는건 transition 태그 찾기*/
-		background: black;
 	}
 
 	.black_banner {
