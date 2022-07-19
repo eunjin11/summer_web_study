@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script context="module" lang="ts" style="margin: 0;">
 	export const prerender = true;
 	const keyword_item: string[] = [
 		'지구한바퀴 세계여행',
@@ -33,7 +33,7 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section>
+<section style="margin: 0;">
 	<!--<Counter />-->
 	<head>
 		<title>글이 작품이 되는 공간, 브런치</title>
