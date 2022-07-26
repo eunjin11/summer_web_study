@@ -308,6 +308,10 @@
 <style>
 	@import url(//fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
 
+	.head {
+		margin: 0px;
+	}
+
 	.menu_button {
 		background: url(https://t1.daumcdn.net/brunch/static/img/help/pc/ico_view_cover.v4.png);
 		display: inline-block;

@@ -12,9 +12,23 @@
 	let oper: string = '';
 	let oper2: string = '';
 	let str2: string = '';
+
+	//let str: string|number; ->숫자도 넣을 수 있음
+
+	//로직(+-*/)을 인덱스가 아니라 컴포넌트에 넣어야함
 </script>
 
+<!--<BarGraph>
+	{#each textNumbers as item}
+		<Baritem>{item}</Baritem>
+	
+	{/each}
+</BarGraph>
+//바 그래프라는 컴포넌트 -->
+
+<!--<div  style={'${padding? '. ..}></div>-->
 <div class="typing">
+	<!--<div slot="title"></div>-->
 	{str}
 </div>
 
@@ -34,6 +48,7 @@
 					num = parseInt(str2);
 
 					if (oper == '') sum = num;
+
 					if (oper == '+') {
 						sum = sum + num;
 					} else if (oper == '-') {

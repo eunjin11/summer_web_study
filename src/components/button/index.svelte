@@ -7,6 +7,8 @@
 
 <div class="button" data-color={color} on:click={() => onClick(text)}>{text}</div>
 
+<slot />
+
 <style lang="scss">
 	.button {
 		width: 80px;
