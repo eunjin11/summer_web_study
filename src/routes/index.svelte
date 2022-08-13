@@ -651,4 +651,9 @@ css적용이 안되던데 왜 그런지 궁금함
 		color: white;
 		text-decoration: underline;
 	}
+
+	:global(body, html) {
+		padding: 0;
+		margin: 0;
+	}
 </style>

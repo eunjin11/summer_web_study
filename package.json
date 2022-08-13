@@ -17,6 +17,8 @@
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
 		"@types/cookie": "^0.5.1",
+		"@types/d3": "^7.4.0",
+		"@types/lodash": "^4.14.182",
 		"prettier": "^2.6.2",
 		"prettier-plugin-svelte": "^2.7.0",
 		"svelte": "^3.46.0",
@@ -30,7 +32,10 @@
 	"dependencies": {
 		"@fontsource/fira-mono": "^4.5.0",
 		"@sveltejs/adapter-static": "^1.0.0-next.35",
+		"@types/axios": "^0.14.0",
+		"axios": "^0.27.2",
 		"cookie": "^0.4.1",
+		"d3": "^7.6.1",
 		"node-sass": "^7.0.1"
 	}
 }
