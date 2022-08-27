@@ -18,6 +18,7 @@ export interface PriceUnit {
 	marketCap: number;
 	dayVolume: number;
 }
+
 export async function updateData(days: 7 | 30 | 90 | 180 | 360) {
 	const data = (await axios.get<string>(getUrl(days))).data;
 	const prices = _(data.split('\n'))

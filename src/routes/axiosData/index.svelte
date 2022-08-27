@@ -37,7 +37,6 @@
 			{$priceData.length}
 		</h1>
 	</div>
-
 	<div>
 		<div class="header">
 			<div class="name">DENOM</div>

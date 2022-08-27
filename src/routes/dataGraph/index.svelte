@@ -1,13 +1,15 @@
 <script lang="ts">
 	import { BarGraph } from '@src/components/bargraph';
 	import { Baritem } from '@src/components/baritem';
-	import { updateData, priceData, type PriceUnit } from '@src/store';
+	import _ from 'lodash';
+	import * as d3 from 'd3';
+	import { svg } from 'd3';
+	import { updateData, priceData, type PriceUnit } from '@src/store/index';
 	import { onMount, onDestroy } from 'svelte';
 	let data: number[] = [1, 2, 3, 5, 8];
 	let title: string = 'Hello world';
 
-	/*import _ from 'lodash';
-	import * as d3 from 'd3';*/
+
 
 	//export let data: number[];
 	//export let title: string;
@@ -17,23 +19,13 @@
 
 	const legend: number = textNumbers.length;
 
-	const minV: number = Math.min(...textNumbers);
-	const maxV: number = Math.max(...textNumbers);
-
-	/*
-	const range = maxV - minV;
-	const guideCount = 11;
-	//const diff = Math.round(range / guideCount);
-
-	let i = Math.round(minV);
-	let leftMax = Math.round(maxV);
-
-	const leftGuides: number[] = [];
-	for (i; i <= leftMax; i = i + 0.5) {
-		leftGuides.push(i);
-	}*/
+	let minV: number = Math.min(...textNumbers);
+	let maxV: number = Math.max(...textNumbers);
+	let diff: number;
 
 	let prices: [number, number][] = [];
+	let eleContainerWidth: number;
+	let eleContainerHeight: number;
 
 	//const d = getData(7);
 
@@ -44,9 +36,16 @@
 
 	/*
 	const line = d3
-		.line<[Number, Number]>()
+		.line<[number, number]>()
 		.x((d) => d[0] * 10)
-		.y((d) => d[1] * 20000 + 100); */
+		.y((d) => d[1] * 20000 + 100)
+		.curve(d3.curveBasis); */
+
+	const line = d3
+		.line<[number, number]>()
+		.x((d) => (d[0] * eleContainerWidth) / prices.length)
+		.y((d) => ((d[1] - minV) * eleContainerHeight) / diff)
+		.curve(d3.curveBasis);
 
 	/*
 	$:{
@@ -55,12 +54,8 @@
 		//max나 min이 변경될 경우
 	} //업데이트 하는 기능
 	*/
-	/*
-	const line = d3.line<[Number, Number]>();
-	line([
-		[0, 0],
-		[0, 0]
-	]);
+
+	let path: string|null|undefined; //임시로 let 붙임
 
 	$: {
 		prices = _($priceData)
@@ -68,15 +63,31 @@
 			.take(100)
 			.value();
 		path = line(prices);
-		minV = _;
+		minV = _(prices)
+			.map((p) => p[1])
+			.min() as number;
+		maxV = _(prices)
+			.map((p) => p[1])
+			.max() as number;
+		diff = maxV - minV;
 		console.log(prices);
-	}
-	$: {
 		console.log(eleContainerWidth, eleContainerHeight);
+
 	}
-	*/
 </script>
 
+prices: {prices}
+path: {path}
+
+
+<div bind:clientWidth={eleContainerWidth}
+bind:clientHeight={eleContainerHeight}>
+	<svg style="width:100%;">
+		<path d={path} />
+	</svg>
+</div>
+
+<!--
 <div class="root">
 	<div>
 		<select
@@ -117,6 +128,7 @@
 		</div>
 	</div>
 </div>
+-->
 
 <!--
 <div class="frame">
@@ -136,7 +148,7 @@
 	//.root {
 	//	display: flex;
 	//}
-
+	/*
 	.header {
 		top: 15%;
 		width: 100%;
@@ -168,7 +180,7 @@
 		border-left: solid 2px rgb(170, 170, 170);
 		width: 20%;
 	}
-
+*/
 	/*
 	.numbers {
 		width: 30px;
